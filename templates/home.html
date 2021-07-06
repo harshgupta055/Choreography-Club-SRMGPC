@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<title>Home | Choreography Club | SRMGPC</title>
+{% endblock %}
+
+{% block body %}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/first.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        {% for i in carouselItem %}
+        <div class="carousel-item">
+            <img src="{{ i.image.url }}" class="d-block w-100" alt="...">
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class='container-fluid'>
+    <div class="row">
+        <div class="col-lg-3 col-4 p-0">
+            <div>
+                <img src="{% static 'images/d1.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-4 p-0">
+            <div>
+                <img src="{% static 'images/d2.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-4 p-0">
+            <div>
+                <img src="{% static 'images/d3.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-4 p-0">
+            <div>
+                <img src="{% static 'images/d4.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-4 p-0 d-lg-none">
+            <div>
+                <img src="{% static 'images/d5.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-4 p-0 d-lg-none">
+            <div>
+                <img src="{% static 'images/d6.jpg' %}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center my-3 p-3">
+    <h1 class='display-5 fw-bold text-center'>WELCOME TO OUR WEBSITE</h1>
+    <h4 class="text-info text-center">It’s good to have big dreams!</h4>
+    <p class='fs-6 text-center px-3'>Nobody cares if you can't dance well. Just get up and dance. Great dancers are
+        great
+        because of their passion. And we as a institute welcome you as a student with your passion and dedication. We
+        are
+        grateful to have you with us.</p>
+</div>
+
+<div class="container-fluid">
+    <iframe class='teaser' width="100%"
+        src="https://www.youtube.com/embed/ODAP5B8V6Nw?controls=0&autoplay=0&mute=1&playlist=ODAP5B8V6Nw&loop=1"
+        frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="container my-5">
+    <div class="row featurette">
+        <div class="col-md-9 order-md-2 mt-xl-5 mt-0 ps-lg-5 ps-4">
+            <h1 class="featurette-heading">OUR MENTOR</h1>
+            <h5 class="text-info">Er. Mayank Kumar</h5>
+            <h6 class="mt-3">From the desk of mentor - </h6>
+            <p class="lead pe-lg-5 pe-2">SRMGPC, as a institute promotes and believe in all round personality
+                development of a
+                student in every field of interest like dance, music, art and craft, photography etc. Choreography Cell
+                is one of the major club maintained and handled by the students itself according to their ideas. Being a
+                mentor as a faculty for these students and cell is one of the interesting and best part. It makes me
+                feel like I am re-living my own college journey once again with the choreography team. I am thankful to
+                all the students who are connected to it in a way and making the Institute a better place with positive
+                energy of dance.</p>
+            <a href="https://www.facebook.com/mayank.srivastava.7965">@Facebook</a>
+        </div>
+        <div class="col-md-3 order-md-1 mt-lg-0 mt-2">
+            <img src="{% static 'images/mayanksir1.jpg' %}" alt="" class="img-fluid shadow">
+        </div>
+    </div>
+</div>
+
+<div class="mt-2 p-md-2 p-3 container border-top">
+    <a href="https://youtube.com/channel/UCN9oqPsqS6tFelg6NkLDPjA" target="_blank"
+        class='text-decoration-none text-dark fw-bold display-5'><img src="{% static 'images/youtube.png' %}" alt="">
+        <span>Youtube Updates</span></a>
+    <div class="row mt-md-4 mt-3">
+        {% for i in youtubeUpdate %}
+        <div class="col-xl-4 col-12">
+            <div class="card shadow-sm mt-xl-0 mt-4">
+                <div class="ratio ratio-16x9">
+                    <iframe width="560" height="315" src="{{ i.embed_link }}" title="YouTube video player"
+                        frameborder="0" allow="accelerometer; clipboard-write; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="card-body">
+                    <h5 class="videoTitle">{{ i.title }}</h5>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div class="btn-group">
+                            <a href="{{ i.video_link }}" target='_blank'
+                                class="btn btn-sm btn-danger text-white">View</a>
+                            <a href="https://api.whatsapp.com/send?phone=&text={{ i.video_link }}"
+                                target='_blank' class="btn btn-sm btn-info text-white">Whatsapp</a>
+                        </div>
+                        <small class="text-muted">Updated on {{ i.date }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mt-3 border-top p-md-2 p-3">
+    <h6 class='display-4 fw-bold'><img src="{% static 'images/event.png' %}" alt=""> Ongoing Event</h6>
+    {% for i in ongoingEvent %}
+    <div class="mt-4 d-flex flex-column justify-content-center align-items-center">
+        <img src="{{ i.event_poster.url }}" alt="" class="img-fluid shadow-sm w-100">
+        <div class="d-flex justify-content-center">
+            <a href="{{ i.event_link }}" class='btn btn-sm btn-primary px-5 mt-3'>Register Now</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container my-4 border-top p-3">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h2 class='display-5 fw-bold'><img src="{% static 'images/group.png' %}" alt=""> Coordinators</h2>
+                <div class="container mt-4">
+                    <div class="row">
+                        {% for i in coordinators %}
+                        <div class="col-6 col-md-4 col-xxl-2">
+                            <div class="d-flex flex-column justify-content-center align-items-center pt-3 shadow mb-xxl-0 mb-4">
+                                <div>
+                                    <img src="{{ i.profile_image.url }}" alt="{{ i.name }}"
+                                        class='img-fluid shadow-sm profile'>
+                                </div>
+                                <h6 class='text-center fs-5 fw-bold mt-3'>{{ i.name }}</h6>
+                                <small class="text-center">{{ i.branch }}</small>
+                                <p class="my-0 phone mt-2 fw-bold user-select-all" id="phone{{ i.id }}">{{i.phone}}
+                                </p>
+                                <div class="d-flex justify-content-center w-100 mt-3 card_bottom">
+                                    <a href="{{ i.linkedin_link }}" class="coordinator_link py-2 px-1"
+                                        target="_blank"><img src="{% static 'images/linkedin.png' %}" alt=""></a>
+                                    <a href="{{ i.insta_link }}" class="coordinator_link py-2 px-1" target="_blank"><img
+                                            src="{% static 'images/instagram.png' %}" alt=""></a>
+                                    <a class="contact coordinator_link py-2 px-1" id="{{ i.id }}"><img
+                                            src="{% static 'images/phone.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <h2 class='display-5 fw-bold'><img src="{% static 'images/group.png' %}" alt=""> Veteran Coordinators
+                </h2>
+                <div class="container mt-4">
+                    <div class="row">
+                        {% for j in veteranCoordinators %}
+                        <div class="col-6 col-md-4 col-xxl-2">
+                            <div class="d-flex flex-column justify-content-center align-items-center pt-3 shadow mb-xxl-0 mb-4">
+                                <div>
+                                    <img src="{{ j.profile_image.url }}" alt="{{ j.name }}"
+                                        class='img-fluid shadow-sm profile'>
+                                </div>
+                                <h6 class='text-center fs-5 fw-bold mt-3'>{{ j.name }}</h6>
+                                <small class="text-center">{{ j.branch }}</small>
+                                <p class="my-0 phone mt-2 fw-bold user-select-all" id="phoneVC{{ j.id }}">{{j.phone}}</p>
+                                <div class="card_bottom d-flex justify-content-center w-100 mt-3">
+                                    <a href="{{ j.linkedin_link }}" class="coordinator_link py-2 px-1"
+                                        target="_blank"><img src="{% static 'images/linkedin.png' %}" alt=""></a>
+                                    <a href="{{ j.insta_link }}" class="coordinator_link py-2 px-1" target="_blank"><img
+                                            src="{% static 'images/instagram.png' %}" alt=""></a>
+                                    <a class="contact coordinator_link py-2 px-1" id="VC{{ j.id }}"><img
+                                            src="{% static 'images/phone.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid bg-secondary text-white pt-5 pb-1 px-0 mt-md-5 mt-4">
+    <div class="container ps-lg-0 ps-5">
+        <div class="row">
+            <div class="col-lg-3 col-12 my-2">
+                <h2>Address</h2>
+                <p>Main Road Tiwariganj (NH-28), Faizabad Road, Lucknow, Uttar Pradesh 227105</p>
+            </div>
+            <div class="col-lg-3 col-12 my-2">
+                <h2>Contact</h2>
+                <p class="my-0 py-0 user-select-all">9696712061</p>
+                <p class="my-0 py-0 user-select-all">8318340693</p>
+                <p class="my-0 py-0 user-select-all">6391388511</p>
+            </div>
+            <div class="col-lg-3 col-12 my-2">
+                <h2>Email</h2>
+                <h6 class="email user-select-all">choreographycell@gmail.com</h6>
+            </div>
+            <div class="col-lg-3 col-12 my-2">
+                <h2>Follow Us</h2>
+                <div class="d-flex">
+                    <a href="https://www.facebook.com/choreography.cell.3"><img src="{% static 'images/fb.png' %}"
+                            alt="" width="60px" height="60px"></a>
+                    <a href="https://www.instagram.com/_choreography_club__srmgpc/"><img
+                            src="{% static 'images/insta.png' %}" alt="" width="60px" height="60px"></a>
+                    <a href="https://www.youtube.com/channel/UCN9oqPsqS6tFelg6NkLDPjA/featured"><img
+                            src="{% static 'images/yt.png' %}" alt="" width="60px" height="60px"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class='bg-info py-3 text-center w-100 mt-md-5 display-5 fw-bold mt-4'>DANCE LIKE NO ONE'S WATCHING!</h1>
+    <div class="container text-white pt-md-5 pt-4 px-4 pb-5 contactBox">
+        <h3 class="text-center">Contact us!</h3>
+        <form action="{% url 'contactPage' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="page" value="home" hidden>
+            <div class="form-group my-4">
+                <input type="text" class="form-control" id="name" name="name" required="required"
+                    placeholder="Enter your Name" width="200px">
+            </div>
+            <div class="form-group my-4">
+                <input type="email" class="form-control" id="email" name="email" required="required"
+                    placeholder="Enter your Email">
+            </div>
+            <div class="form-group my-4">
+                <input type="number" class="form-control" id="phone" name="phone" required="required"
+                    placeholder="Enter your Phone Number">
+            </div>
+            <div class="form-group my-4">
+                <textarea class="form-control" id="desc" name="query" rows="3" required="required"
+                    placeholder="How may we help you!"></textarea>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+            </div>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+        <p class="text-white text-center">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <p class="text-center text-light mb-0">A website by - <a href="https://www.linkedin.com/in/harsh-gupta-5173051b3"
+            class='text-light text-decoration-none' target="_blank">Harsh Gupta</a></p>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        $(".contact").click(function () {
+            let a = $(this).attr('id')
+            $(`#phone${a}`).toggle()
+        })
+    })
+</script>
+
+
+{% endblock %}

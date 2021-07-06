@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+<title>Gallery | Choreography Club | SRMGPC</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="mt-4 fw-bold text-center display-5">Gallery</h1>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-4 px-3">
+    <div class="container bg-white p-3 shadow">
+        <h2 class="text-center winners">Winners of 3 consecutive Abhivyakti</h2>
+        <img src="{% static 'images/trophy.jpg' %}" alt="" class="img-fluid mt-3">
+    </div>
+</div>
+
+<div class="container px-xl-0 px-3">
+    <div class="container bg-white p-3 py-2 mt-lg-5 mt-4 w-100 shadow">
+        <div class="row">
+            {% for i in page_obj %}
+            <div class="col-lg-4 col-12 px-0">
+                <div class="d-flex justify-content-center">
+                    <a href="{{ i.image.url }}"><img src="{{ i.image.url }}" title="{{ i.event }}" alt="{{ i.event }}" class="img-fluid px-2 py-1"></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-between my-4 px-3">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-light text-dark shadow-sm">Prev</a>
+    {% else %}
+    <a href="#" class="btn btn-light text-dark shadow-sm">Prev</a>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-light text-dark shadow-sm">Next</a>
+    {% else %}
+    <a href="#" class="btn btn-light text-dark shadow-sm">Next</a>
+    {% endif %}
+</div>
+{% endblock %}

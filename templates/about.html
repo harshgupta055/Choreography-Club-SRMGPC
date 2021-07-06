@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<title>About | Choreography Club | SRMGPC</title>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class='text-center text-decoration-underline fw-bold display-5'>Welcome</h1>
+    <p class="text-center about mt-3 px-3">Choreography Club, SRMGPC Lucknow is one of the major club of the college managed by the team of students. Choreography Club promotes the interest in dance of the student along with their studies. The cell provides the good platform and support to the students to perform at different levels and to showcase their talent in front of the world. The cell is totally supported by the administration team financially also. The team also participates in competition beyond the college also such as Antaragini,IIT Kanpur. We perform at the annual cultural fest of the college like ABHIVYAKTI, GANTAVYA and also organise events on festivals and many more.</p>
+    <img src="{% static 'images/srmcem.jpg' %}" alt="" class="img-fluid w-100 mt-4">
+    <h1 class='text-center text-decoration-underline display-6 fw-bold'>THANKYOU FOR VISITING OUR WEBSITE</h1>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Namaskaram | Choreography Club | SRMGPC</title>
+{% endblock %}
+
+{% block body %}
+<div id="main" class="main">
+    <div id="carouselExampleSlidesOnly" class="carousel slide car" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for i in carousel %}
+            <div class="carousel-item {{ i.class_name }}">
+                <img src="{{ i.image.url }}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="mt-2">
+    <h1 class='text-center' style="font-family: 'Reggae One', cursive;">NAMASKARAM</h1>
+</div>
+
+
+<div class="container mt-3">
+    <h4 class="text-center mb-3 register">Register Here!</h4>
+    <form action="{% url 'ongoingEvent' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label fw-bold">Name*</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label fw-bold">Email*</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label fw-bold">Contact No.*</label>
+            <input type="number" class="form-control" id="phone" name="phone" placeholder="10-digits number">
+        </div>
+        <div class="mb-3">
+            <label for="college" class="form-label fw-bold">College/School*</label>
+            <input type="text" class="form-control" id="college" name="college" placeholder="Your college/school">
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="container mt-5">
+    <h5 class="text-center">Follow us here:</h5>
+
+    <div class="d-flex justify-content-center">
+        <a href="https://www.facebook.com/choreography.cell.3"><img src="{% static 'images/fb.png' %}" alt=""
+                width="60px" height="60px"></a>
+        <a href="https://www.instagram.com/_choreography_club__srmgpc/"><img src="{% static 'images/insta.png' %}"
+                alt="" width="60px" height="60px"></a>
+        <a href="https://www.youtube.com/channel/UCN9oqPsqS6tFelg6NkLDPjA/featured"><img
+                src="{% static 'images/yt.png' %}" alt="" width="60px" height="60px"></a>
+    </div>
+</div>
+
+<p class='text-center text-black-50 mt-4'>
+    A website by - <a href="https://www.linkedin.com/in/harsh-gupta-5173051b3" target="_blank"
+        class='text-black-50 text-decoration-none'>Harsh Gupta</a>
+</p>
+{% endblock %}

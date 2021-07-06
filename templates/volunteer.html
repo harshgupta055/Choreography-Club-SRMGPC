@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/volunteer.css' %}">
+<title>Volunteers | Choreography Club | SRMGPC</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid px-3">
+    <h1 class="text-center display-5 fw-bold mt-4">Volunteers</h1>
+    {% for i in controlVolunteer %}
+    <div class="container bg-white shadow p-2 mt-4">
+        <h2 class='text-center'>{{ i }}</h2>
+        <div class="row">
+            {% for j in volunteers %}
+            {% if j.year == i.year %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="p-lg-3 p-xl-5 p-2">
+                    <img src="{{ j.image.url }}" alt=""
+                        class="img-fluid rounded rounded-circle p-lg-3 p-3 shadow-sm">
+                    <h3 class="text-center name mt-2">{{ j.student_name }}</h3>
+                    <p class="text-center text-black-50 branch mb-2">{{ j.branch }}</p>
+                    <p class="text-center mb-0 contact">Contact no.</p>
+                    <h6 class="text-center number user-select-all">{{ j.phone }}</h6>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="{{ j.fb_link }}" class="mx-1"><img src="{% static 'images/fbook.png' %}" alt=""></a>
+                        <a href="{{ j.linkedin_link }}" class="mx-1"><img src="{% static 'images/linked.png' %}" alt=""></a>
+                        <a href="{{ j.insta_link }}" class="mx-1"><img src="{% static 'images/igram.png' %}" alt=""></a>
+                        <a href="{{ j.yt_link }}" class="mx-1"><img src="{% static 'images/y.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="bg-dark p-lg-5 p-3 mt-lg-5 mt-4 text-white">
+    <div class="container">
+        <h1 class='text-center'>About</h1>
+        <p class="my-0 mt-4 text-center about fs-6">Volunteers are our building block and members of the team. They are the one who made this cell possible to exist and survive at its very best. Volunteers do all the hard-work and perform in our events and make it possible to win also. They are the performers and also manage the given task to conduct the events properly and to maintain the decorum of the institute.</p>
+    </div>
+</div>
+{% endblock %}
